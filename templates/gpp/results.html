@@ -1,0 +1,19 @@
+{% extends 'gpp/base.html' %}
+
+{% block title %}Results{% endblock %}
+
+{% block body_block %}
+    {#OR START HERE FOR A RESULT BLOCK?!?!?!?#}
+    <h1>Results</h1>
+    {% if result_list %}
+        {% for result in result_list %}
+            <p>
+                {{ forloop.counter }}. <strong>{{ result.items.3.1.title }}</strong><br />
+                {{ result.items.3.1.description }}
+            </p>
+        {% endfor %}
+    {% else %}
+        <p>No results found for <em>'{{ search }}'</em></p>
+    {% endif %}
+
+{% endblock %}

@@ -1,0 +1,17 @@
+<div class="container" id="filters">
+    <select name="agencies" id="agencies" style="width: 300px">
+        {% for agency in agencies %}
+            <option value="{{ agency }}">{{ agency }}</option>
+        {% endfor %}
+    </select><br />
+    <select name="categories" id="categories" style="width: 300px">
+        {% for category in categories %}
+            <option value="{{ category }}">{{ category }}</option>
+        {% endfor %}
+    </select><br />
+    <select name="types" id="types" style="width: 300px">
+        {% for type in types %}
+            <option value="{{ type }}">{{ type }}</option>
+        {% endfor %}
+    </select>
+</div>

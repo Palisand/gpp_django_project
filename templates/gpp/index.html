@@ -1,0 +1,16 @@
+{% extends 'gpp/base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block body_block %}
+    <h1>Search Publications</h1>
+    <form id="search_form" method="post" action="/gpp/results/">
+        {% csrf_token %}
+        <input type="text" name="query" value="" id="query" />
+        <input type="submit" name="submit" value="Search" /><br />
+        <br />
+        {% include 'gpp/selects.html' %}
+    </form>
+    <br />
+    <button type="button">Remove Filters</button>
+{% endblock %}
