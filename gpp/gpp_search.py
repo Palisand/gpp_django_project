@@ -3,44 +3,66 @@ from elasticsearch import Elasticsearch
 es = Elasticsearch()
 
 
-def run_query(search, agencies_selected=None, categories_selected=None, types_selected=None, start=0, num_results=10):
+def run_query(query, agencies_selected=None, categories_selected=None, types_selected=None, sort_method='Relevance', start=0, size=10):
 
     results = []
+    match_list = []
 
-    if search:
+    if query:
 
-        query_list = [
+        match_list = [
             {
                 "multi_match": {
-                    "query": search,
-                    "fields": ["title", "description", "file"],
+                    "query": query,
+                    "fields": ["title", "description", "agency", "category", "type"], # "file"],
                     "type": "best_fields",
                     "cutoff_frequency": 0.0001
                 },
             },
         ]
 
-        if agencies_selected:
-            query_list.append({"in": {"agency": agencies_selected, }, })
+    filter_update(match_list, agencies_selected, categories_selected, types_selected)
 
-        if categories_selected:
-            query_list.append({"in": {"category": categories_selected, }, })
-
-        if types_selected:
-            query_list.append({"in": {"type": types_selected, }, })
-
-        results = es.search(index='publications2', body={
-                "from": start, "size": num_results,
-                "query": {
-                    "bool": {
-                        "must": query_list
-                    }
+    raw_results = es.search(index='publications2', body={
+            "from": start,
+            "size": size,
+            "query": {
+                "bool": {
+                    "must": match_list
+                }
+            },
+            "highlight": {
+                "pre_tags": ["<strong>"],
+                "post_tags": ["</strong>"],
+                "fields": {
+                    "_all": {}
                 }
             }
-        )
+        }
+    )
 
-    return results['hits']['hits']
+    rank = int(start)
+    for result in raw_results['hits']['hits']:
+        rank += 1
+        result[u'_source'][u'rank'] = rank
+        results.append(result['_source'])
+
+    total = raw_results['hits']['total']
+
+    return results, total
 
 
 def sort_query():
     pass
+
+
+def filter_update(match_list, agencies, categories, types):
+
+    if agencies:
+        match_list.append({"in": {"agency": agencies, }, })
+
+    if categories:
+        match_list.append({"in": {"category": categories, }, })
+
+    if types:
+        match_list.append({"in": {"type": types, }, })

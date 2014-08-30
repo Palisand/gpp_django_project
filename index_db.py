@@ -1,5 +1,5 @@
 import os
-# import base64
+import base64
 import time
 from elasticsearch import Elasticsearch
 es = Elasticsearch()
@@ -10,35 +10,55 @@ DOCTYPE = 'document'
 
 def index():
     es.indices.delete(index=INDEX, ignore=[400, 404])
-    es.indices.create(index=INDEX)
+    es.indices.create(index=INDEX, body={
+        "index": {
+            "analysis": {
+                "analyzer": {
+                    "gpp_analyzer": {
+                        "type": "snowball",
+                        "language": "English"
+                    }
+                }
+            }
+        }
+    })
 
     index_time_start = time.clock()
 
     es.indices.put_mapping(index=INDEX, doc_type=DOCTYPE, body={
         DOCTYPE: {
             'properties': {
-              'id':             {'type': 'integer'},
-              'title':          {'type': 'string', 'analyzer': 'snowball', 'index': 'analyzed'},
-              'description':    {'type': 'string', 'analyzer': 'snowball', 'index': 'analyzed'},
-              'date_created':   {'type': 'date'},
-              'common_id':      {'type': 'integer'},
-              'section_id':     {'type': 'integer'},
-              'pub_or_foil':    {'type': 'string', 'index': 'no'},
-              'agency':         {'type': 'string', 'index': 'not_analyzed'},
-              'category':       {'type': 'string', 'index': 'not_analyzed'},
-              'type':           {'type': 'string', 'index': 'not_analyzed'},
-              'url':            {'type': 'string', 'index': 'no'},
-              # 'file':           {'type': 'attachment', 'analyzer': 'snowball', 'index': 'analyzed'}
+                'id':             {'type': 'integer'},
+                'title':          {'type': 'string', 'analyzer': 'gpp_analyzer', 'index': 'analyzed'},
+                'description':    {'type': 'string', 'analyzer': 'gpp_analyzer', 'index': 'analyzed'},
+                'date_created':   {'type': 'date'},
+                'common_id':      {'type': 'integer'},
+                'section_id':     {'type': 'integer'},
+                'pub_or_foil':    {'type': 'string', 'index': 'no'},
+                'agency':         {'type': 'string', 'index': 'not_analyzed'},
+                'category':       {'type': 'string', 'index': 'not_analyzed'},
+                'type':           {'type': 'string', 'index': 'not_analyzed'},
+                'url':            {'type': 'string', 'index': 'no'},
+                # 'file':           {
+                #     'type': 'attachment',
+                #     # 'analyzer': 'gpp_analyzer',
+                #     'index': 'no', # still doesn't work, what the hell?!
+                #     # 'fields': {
+                #     #     'keywords': {'store': 'yes'}
+                #     # }
+                # }
             }
         }
     })
 
-    docs = Document.objects.filter(id=1)
+    docs = Document.objects.all()
+
+    # docs = Document.objects.filter(id=1)
     # file = open('/Users/Palisand/Documents/DORIS/misc_scripts/test', 'r')
-    # attachment = file.readlines()
-    # bstring = ''
-    # for line in attachment:
-    #     bstring += line.strip()
+    # lines = file.readlines()
+    # b64encoded = ''
+    # for line in lines:
+    #     b64encoded += line.strip()
 
     for doc in docs:
         es.index(index=INDEX, doc_type=DOCTYPE, body={
@@ -53,7 +73,7 @@ def index():
             "category":     doc.category,
             "type":         doc.type,
             "url":          doc.url,
-            # "file":         bstring
+            # "file":         b64encoded
         })
 
     index_time_elapsed = time.clock() - index_time_start

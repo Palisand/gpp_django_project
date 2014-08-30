@@ -35,6 +35,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_jinja',
     'gpp',
 )
 
@@ -46,6 +47,17 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
+
+TEMPLATE_DIRS = (
+    os.path.join(BASE_DIR, 'templates'),
+)
+
+# TEMPLATE_LOADERS = {
+#     'django_jinja.loaders.AppLoader',
+#     'django_jinja.loaders.FileSystemLoader',
+# }
+#
+# DEFAULT_JINJA2_TEMPLATE_EXTENSION = '.jinja'
 
 ROOT_URLCONF = 'gpp_django_project.urls'
 
@@ -59,7 +71,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'publications2',
         'USER': 'root',
-        'PASSWORD': '-',
+        'PASSWORD': os.environ.get('RECORDS_DB_59_PASSWORD'),
         'HOST': '10.155.146.59',
         'PORT': '3306',
     }
@@ -82,7 +94,3 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
-
-TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR, 'templates'),
-)

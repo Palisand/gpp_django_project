@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Document(models.Model):
-    title = models.CharField(max_length=255) #auto id?
+    title = models.CharField(max_length=255)
     description = models.TextField()
     date_created = models.DateField()
     common_id = models.IntegerField(default=None, null=True)
