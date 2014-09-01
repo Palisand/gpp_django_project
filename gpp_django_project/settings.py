@@ -35,7 +35,6 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_jinja',
     'gpp',
 )
 
@@ -52,13 +51,6 @@ TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates'),
 )
 
-# TEMPLATE_LOADERS = {
-#     'django_jinja.loaders.AppLoader',
-#     'django_jinja.loaders.FileSystemLoader',
-# }
-#
-# DEFAULT_JINJA2_TEMPLATE_EXTENSION = '.jinja'
-
 ROOT_URLCONF = 'gpp_django_project.urls'
 
 WSGI_APPLICATION = 'gpp_django_project.wsgi.application'
@@ -67,12 +59,21 @@ WSGI_APPLICATION = 'gpp_django_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'publications2',
+    #     'USER': 'root',
+    #     'PASSWORD': os.environ.get('RECORDS_DB_59_PASSWORD'),
+    #     'HOST': '10.155.146.59',
+    #     'PORT': '3306',
+    # }
+
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'publications2',
+        'NAME': 'publications',
         'USER': 'root',
-        'PASSWORD': os.environ.get('RECORDS_DB_59_PASSWORD'),
-        'HOST': '10.155.146.59',
+        'PASSWORD': '',
+        'HOST': '127.0.0.1',
         'PORT': '3306',
     }
 }

@@ -9,7 +9,7 @@ TYPES = ['Annual Report', 'Audit Report', 'Bond Offering - Official Statements',
 
 
 def index(request):
-    request.session['query'] = '' # temporary defensive]
+    request.session['query'] = ''
 
     context_dict = {'agencies': AGENCIES,
                     'categories': CATEGORIES,
@@ -19,20 +19,21 @@ def index(request):
 
 
 def results(request):
-    query = ''
-    num_pages = 0
-    if 'start' not in request.session:
-        request.session['start'] = 0
+    # set initial values
+    if 'query' not in request.session:
+        request.sessionp['query'] = ''
     if 'size' not in request.session:
         request.session['size'] = 10
+    if 'num_pages' not in request.session:
+        request.session['num_pages'] = 0
+
+    request.session['start'] = 0
+    request.session['page_id'] = 1
 
     if request.method == 'POST':
 
         if request.POST.get('query'):
-            query = request.POST['query'].strip()
-            request.session['query'] = query
-        elif request.session.get('query'):
-            query = request.session['query']
+            request.session['query'] = request.POST['query'].strip()
 
         request.session['agencies'] = request.POST.getlist('agencies[]')
         request.session['categories'] = request.POST.getlist('categories[]')
@@ -40,38 +41,30 @@ def results(request):
 
     if request.method == 'GET':
 
-        request.session['start'] = 0
-
-        if request.session.get('query'):
-            query = request.session['query']
-
         if 'page_id' in request.GET:
             request.session['start'] = int(request.session['size']) * (int(request.GET['page_id']) - 1)
-
-        # if 'size' in request.GET:
-        #     request.session['size'] = request.GET['size']
+            request.session['page_id'] = request.GET['page_id']
 
         request.session['size'] = request.GET.get('size', request.session.get('size'))
 
-    results, num_results = run_query(query,
-                                     request.session['agencies'],
-                                     request.session['categories'],
-                                     request.session['types'],
-                                     request.session['start'],
-                                     request.session['size'])
+    # all information gathered -> run_query
+    request.session['results'], request.session['num_results'] = run_query(
+        request.session['query'],
+        request.session['agencies'],
+        request.session['categories'],
+        request.session['types'],
+        request.session['start'],
+        request.session['size'])
 
-    request.session['results'] = results
-    request.session['num_results'] = num_results
-
-    if results:
-        num_pages = int(ceil(num_results/float(request.session['size'])))
+    request.session['num_pages'] = int(ceil(request.session['num_results']/float(request.session['size'])))
 
     context_dict = {'agencies': AGENCIES,
                     'categories': CATEGORIES,
                     'types': TYPES,
-                    'results': results,
-                    'num_results': num_results,
-                    'pages': range(1, num_pages+1),
-                    'query': query}
+                    'results': request.session['results'],
+                    'num_results': request.session['num_results'],
+                    'pages': range(1, request.session['num_pages']+1),
+                    'page_id': request.session['page_id'],
+                    'query': request.session['query']}
 
     return render(request, 'gpp/results.html', context_dict)

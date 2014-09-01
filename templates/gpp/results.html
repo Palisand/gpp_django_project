@@ -2,54 +2,66 @@
 
 {% block title %}Results{% endblock %}
 
-{% load gpp_tags %}
-
 {% block body_block %}
-    {#OR START HERE FOR A RESULT BLOCK?!?!?!?#}
-    <form id="search_form" method="post" action="/gpp/results/">
-        {% csrf_token %}
-        <input type="text" name="query" value="" id="query" />
-        <input type="submit" name="submit" value="Search" /><br />
-        <br />
-        {% include 'gpp/selects.html' %}
-    </form>
 
-    <ul style="padding: 0;">
-        <li style="display: inline;">Size:</li>
-        <li style="display: inline;"><a href="/gpp/results/?size=10">10</a></li>
-        <li style="display: inline;"><a href="/gpp/results/?size=20">20</a></li>
-        <li style="display: inline;"><a href="/gpp/results/?size=50">50</a></li>
-        <li style="display: inline;"><a href="/gpp/results/?size=100">100</a></li>
-    </ul>
+    {#OR START HERE FOR A SEARCH/RESULT BLOCK?!?!?!?#}
 
-    <ul style="padding: 0;">
-        <li style="display: inline;">Sort:</li>
-        <li style="display: inline;"><a href=""</li>
-    </ul>
-    <h1>Results</h1>
-    {% if results %}
-        <h3><em>Displaying: </em>{{ results | length }} results for '{{ query }}'</h3>
-        <h3><em>Total: </em>{{ num_results }}</h3>
-        {% for result in results %}
-            <p>
-                {{ result.rank }}. <strong>{{ result.title }}</strong><br />
-                {{ result.description }}<br />
-                [ {{ result.agency }} | {{ result.category }} | {{ result.type }} ]
-            </p>
-        {% endfor %}
-    {% else %}
-        {% if not query %}
-            <p>No results found for selected filters</p>
+    <div style="text-align: center">
+        <form id="search_form" method="post" action="/gpp/results/">
+            {% csrf_token %}
+            <input type="text" name="query" value="" id="query" />
+            <input type="submit" name="submit" value="Search" /><br />
+            <br />
+            {% include 'gpp/selects.html' %}
+        </form>
+    </div>
+
+    <div style="text-align: left; padding-left: 50px">
+        <ul style="padding: 0;">
+            <li style="display: inline;">Size:</li>
+            <li style="display: inline;"><a href="/gpp/results/?size=10">10</a></li>
+            <li style="display: inline;"><a href="/gpp/results/?size=20">20</a></li>
+            <li style="display: inline;"><a href="/gpp/results/?size=50">50</a></li>
+            <li style="display: inline;"><a href="/gpp/results/?size=100">100</a></li>
+        </ul>
+
+        <ul style="padding: 0;">
+            <li style="display: inline;">Sort:</li>
+            <li style="display: inline;"><a href=""></a></li>
+        </ul>
+
+        <h1>Results</h1>
+        {% if results %}
+            {% if pages|length > 1 %}
+                <h3><em>Displaying: </em>{{ results | length }} results for '{{ query }}' on Page: {{ page_id }}</h3>
+            {% else %}
+                <h3><em>Displaying: </em>{{ results | length }} results for '{{ query }}'
+            {% endif %}
+            <h3><em>Total: </em>{{ num_results }}</h3>
+            {% for result in results %}
+                <p>
+                    {{ result.rank }}. <span style="text-decoration: underline;">{{ result.title|safe }}</span><br />
+                    {{ result.description|safe }}<br />
+                    [ {{ result.agency }} | {{ result.category }} | {{ result.type }} ]<br />
+                    {{ result.date_created }}
+                </p>
+            {% endfor %}
         {% else %}
-            <p>No results found for <em>'{{ query }}'</em></p>
+            {% if query %}
+                <p>No results found for <em>'{{ query }}'</em></p>
+            {% else %}
+                <p>No results found for selected filters</p>
+            {% endif %}
         {% endif %}
-    {% endif %}
 
-{#    include pagination#}
-    <ul style="padding: 0;">
-        {% for i in pages %}
-            <li style="display: inline;"><a href="/gpp/results/?page_id={{ i }}">{{ i }}</a></li>
-        {% endfor %}
-    </ul>
+    {#    include pagination#}
+        {% if pages|length > 1 %}
+            <ul style="padding: 0;">
+                {% for i in pages %}
+                    <li style="display: inline;"><a href="/gpp/results/?page_id={{ i }}">{{ i }}</a></li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
 
 {% endblock %}
