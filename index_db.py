@@ -28,17 +28,18 @@ def index():
     es.indices.put_mapping(index=INDEX, doc_type=DOCTYPE, body={
         DOCTYPE: {
             'properties': {
-                'id':             {'type': 'integer'},
-                'title':          {'type': 'string', 'analyzer': 'gpp_analyzer', 'index': 'analyzed'},
-                'description':    {'type': 'string', 'analyzer': 'gpp_analyzer', 'index': 'analyzed'},
-                'date_created':   {'type': 'date'},
-                'common_id':      {'type': 'integer'},
-                'section_id':     {'type': 'integer'},
-                'pub_or_foil':    {'type': 'string', 'index': 'no'},
-                'agency':         {'type': 'string', 'index': 'not_analyzed'},
-                'category':       {'type': 'string', 'index': 'not_analyzed'},
-                'type':           {'type': 'string', 'index': 'not_analyzed'},
-                'url':            {'type': 'string', 'index': 'no'},
+                'id':           {'type': 'integer'},
+                'title':        {'type': 'string', 'analyzer': 'gpp_analyzer', 'index': 'analyzed'},
+                'title_na':     {'type': 'string', 'index': 'not_analyzed'},
+                'description':  {'type': 'string', 'analyzer': 'gpp_analyzer', 'index': 'analyzed'},
+                'date_created': {'type': 'date'},
+                'common_id':    {'type': 'integer'},
+                'section_id':   {'type': 'integer'},
+                'pub_or_foil':  {'type': 'string', 'index': 'no'},
+                'agency':       {'type': 'string', 'index': 'not_analyzed'},
+                'category':     {'type': 'string', 'index': 'not_analyzed'},
+                'type':         {'type': 'string', 'index': 'not_analyzed'},
+                'url':          {'type': 'string', 'index': 'no'},
                 # 'file':           {
                 #     'type': 'attachment',
                 #     # 'analyzer': 'gpp_analyzer',
@@ -64,6 +65,7 @@ def index():
         es.index(index=INDEX, doc_type=DOCTYPE, body={
             "id":           doc.id,
             "title":        doc.title,
+            "title_na":     doc.title,
             "description":  doc.description,
             "date_created": doc.date_created,
             "common_id":    doc.common_id,

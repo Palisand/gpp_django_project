@@ -31,8 +31,8 @@
       <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/gpp/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="507" max-vertical-offset="1125">
-              <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="1200">
+              <caret line="65" column="37" selection-start-line="65" selection-start-column="37" selection-end-line="65" selection-end-column="39" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -43,9 +43,11 @@
       <file leaf-file-name="gpp_search.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/gpp/gpp_search.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.42789224" vertical-offset="330" max-vertical-offset="1515">
-              <caret line="5" column="132" selection-start-line="5" selection-start-column="132" selection-end-line="5" selection-end-column="132" />
-              <folding />
+            <state vertical-scroll-proportion="0.64342314" vertical-offset="914" max-vertical-offset="1545">
+              <caret line="88" column="56" selection-start-line="88" selection-start-column="56" selection-end-line="88" selection-end-column="56" />
+              <folding>
+                <element signature="e#0#29#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -53,8 +55,8 @@
       <file leaf-file-name="results.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/gpp/results.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-23.416666" vertical-offset="98" max-vertical-offset="1080">
-              <caret line="44" column="93" selection-start-line="44" selection-start-column="93" selection-end-line="44" selection-end-column="93" />
+            <state vertical-scroll-proportion="-9.666667" vertical-offset="638" max-vertical-offset="1275">
+              <caret line="58" column="50" selection-start-line="58" selection-start-column="50" selection-end-line="58" selection-end-column="50" />
               <folding>
                 <element signature="e#160#186#0#HTML" expanded="true" />
                 <element signature="e#525#569#0#HTML" expanded="true" />
@@ -67,9 +69,19 @@
                 <element signature="e#1025#1044#0#HTML" expanded="true" />
                 <element signature="e#1062#1086#0#HTML" expanded="true" />
                 <element signature="e#1114#1138#0#HTML" expanded="true" />
-                <element signature="e#1678#1713#0#HTML" expanded="true" />
-                <element signature="e#2316#2335#0#HTML" expanded="true" />
-                <element signature="e#2398#2422#0#HTML" expanded="true" />
+                <element signature="e#1213#1237#0#HTML" expanded="true" />
+                <element signature="e#1312#1336#0#HTML" expanded="true" />
+                <element signature="e#1411#1435#0#HTML" expanded="true" />
+                <element signature="e#1513#1537#0#HTML" expanded="true" />
+                <element signature="e#1616#1640#0#HTML" expanded="true" />
+                <element signature="e#1720#1744#0#HTML" expanded="true" />
+                <element signature="e#1836#1855#0#HTML" expanded="true" />
+                <element signature="e#1873#1897#0#HTML" expanded="true" />
+                <element signature="e#1925#1949#0#HTML" expanded="true" />
+                <element signature="e#1982#2006#0#HTML" expanded="true" />
+                <element signature="e#2541#2576#0#HTML" expanded="true" />
+                <element signature="e#3261#3280#0#HTML" expanded="true" />
+                <element signature="e#3343#3367#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -88,8 +100,8 @@
       <file leaf-file-name="index_db.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index_db.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="450" max-vertical-offset="1335">
-              <caret line="36" column="49" selection-start-line="36" selection-start-column="49" selection-end-line="36" selection-end-column="49" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="45" max-vertical-offset="1365">
+              <caret line="32" column="73" selection-start-line="32" selection-start-column="73" selection-end-line="32" selection-end-column="73" />
               <folding />
             </state>
           </provider>
@@ -112,18 +124,18 @@
         <option value="$PROJECT_DIR$/index_database.py" />
         <option value="$PROJECT_DIR$/gpp/models.py" />
         <option value="$PROJECT_DIR$/templates/gpp/selects.html" />
-        <option value="$PROJECT_DIR$/index_db.py" />
         <option value="$PROJECT_DIR$/gpp/urls.py" />
         <option value="$PROJECT_DIR$/gpp/templatetags/gpp_extra.py" />
         <option value="$PROJECT_DIR$/gpp/templatetags/gpp_extras.py" />
         <option value="$PROJECT_DIR$/gpp/templatetags/range_tag.py" />
         <option value="$PROJECT_DIR$/gpp/templatetags/gpp_tags.py" />
         <option value="$PROJECT_DIR$/gpp_django_project/settings.py" />
-        <option value="$PROJECT_DIR$/gpp/views.py" />
         <option value="$PROJECT_DIR$/templates/gpp/index.html" />
         <option value="$PROJECT_DIR$/templates/gpp/base.html" />
+        <option value="$PROJECT_DIR$/gpp/views.py" />
         <option value="$PROJECT_DIR$/templates/gpp/results.html" />
         <option value="$PROJECT_DIR$/gpp/gpp_search.py" />
+        <option value="$PROJECT_DIR$/index_db.py" />
       </list>
     </option>
   </component>
@@ -540,7 +552,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299389" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24969475" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25885227" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13369964" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -596,7 +608,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="435" max-vertical-offset="765">
           <caret line="29" column="56" selection-start-line="29" selection-start-column="56" selection-end-line="29" selection-end-column="56" />
-          <folding />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -616,9 +630,19 @@
             <element signature="e#1025#1044#0#HTML" expanded="true" />
             <element signature="e#1062#1086#0#HTML" expanded="true" />
             <element signature="e#1114#1138#0#HTML" expanded="true" />
-            <element signature="e#1678#1713#0#HTML" expanded="true" />
-            <element signature="e#2316#2335#0#HTML" expanded="true" />
-            <element signature="e#2398#2422#0#HTML" expanded="true" />
+            <element signature="e#1213#1237#0#HTML" expanded="true" />
+            <element signature="e#1312#1336#0#HTML" expanded="true" />
+            <element signature="e#1411#1435#0#HTML" expanded="true" />
+            <element signature="e#1513#1537#0#HTML" expanded="true" />
+            <element signature="e#1616#1640#0#HTML" expanded="true" />
+            <element signature="e#1720#1744#0#HTML" expanded="true" />
+            <element signature="e#1836#1855#0#HTML" expanded="true" />
+            <element signature="e#1873#1897#0#HTML" expanded="true" />
+            <element signature="e#1925#1949#0#HTML" expanded="true" />
+            <element signature="e#1982#2006#0#HTML" expanded="true" />
+            <element signature="e#2541#2576#0#HTML" expanded="true" />
+            <element signature="e#3261#3280#0#HTML" expanded="true" />
+            <element signature="e#3343#3367#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -767,8 +791,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/gpp/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="312" max-vertical-offset="1125">
-          <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="1200">
+          <caret line="65" column="37" selection-start-line="65" selection-start-column="37" selection-end-line="65" selection-end-column="39" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
@@ -777,8 +801,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index_db.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="1335">
-          <caret line="36" column="49" selection-start-line="36" selection-start-column="49" selection-end-line="36" selection-end-column="49" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="45" max-vertical-offset="1365">
+          <caret line="32" column="73" selection-start-line="32" selection-start-column="73" selection-end-line="32" selection-end-column="73" />
           <folding />
         </state>
       </provider>
@@ -793,8 +817,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/gpp/results.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-23.416666" vertical-offset="98" max-vertical-offset="1080">
-          <caret line="44" column="93" selection-start-line="44" selection-start-column="93" selection-end-line="44" selection-end-column="93" />
+        <state vertical-scroll-proportion="-9.666667" vertical-offset="638" max-vertical-offset="1275">
+          <caret line="58" column="50" selection-start-line="58" selection-start-column="50" selection-end-line="58" selection-end-column="50" />
           <folding>
             <element signature="e#160#186#0#HTML" expanded="true" />
             <element signature="e#525#569#0#HTML" expanded="true" />
@@ -807,18 +831,30 @@
             <element signature="e#1025#1044#0#HTML" expanded="true" />
             <element signature="e#1062#1086#0#HTML" expanded="true" />
             <element signature="e#1114#1138#0#HTML" expanded="true" />
-            <element signature="e#1678#1713#0#HTML" expanded="true" />
-            <element signature="e#2316#2335#0#HTML" expanded="true" />
-            <element signature="e#2398#2422#0#HTML" expanded="true" />
+            <element signature="e#1213#1237#0#HTML" expanded="true" />
+            <element signature="e#1312#1336#0#HTML" expanded="true" />
+            <element signature="e#1411#1435#0#HTML" expanded="true" />
+            <element signature="e#1513#1537#0#HTML" expanded="true" />
+            <element signature="e#1616#1640#0#HTML" expanded="true" />
+            <element signature="e#1720#1744#0#HTML" expanded="true" />
+            <element signature="e#1836#1855#0#HTML" expanded="true" />
+            <element signature="e#1873#1897#0#HTML" expanded="true" />
+            <element signature="e#1925#1949#0#HTML" expanded="true" />
+            <element signature="e#1982#2006#0#HTML" expanded="true" />
+            <element signature="e#2541#2576#0#HTML" expanded="true" />
+            <element signature="e#3261#3280#0#HTML" expanded="true" />
+            <element signature="e#3343#3367#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/gpp/gpp_search.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.42789224" vertical-offset="330" max-vertical-offset="1515">
-          <caret line="5" column="132" selection-start-line="5" selection-start-column="132" selection-end-line="5" selection-end-column="132" />
-          <folding />
+        <state vertical-scroll-proportion="0.64342314" vertical-offset="914" max-vertical-offset="1545">
+          <caret line="88" column="56" selection-start-line="88" selection-start-column="56" selection-end-line="88" selection-end-column="56" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -27,7 +27,19 @@
 
         <ul style="padding: 0;">
             <li style="display: inline;">Sort:</li>
-            <li style="display: inline;"><a href=""></a></li>
+            <li style="display: inline;"><a href="/gpp/results/?sort=relevance">Relevance</a></li>
+            <li style="display: inline;"><a href="/gpp/results/?sort=newest">Date: Newest</a></li>
+            <li style="display: inline;"><a href="/gpp/results/?sort=oldest">Date: Oldest</a></li>
+            <li style="display: inline;"><a href="/gpp/results/?sort=title-asc">Title: A - Z</a></li>
+            <li style="display: inline;"><a href="/gpp/results/?sort=title-desc">Title: Z - A</a></li>
+            <li style="display: inline;"><a href="/gpp/results/?sort=agency-asc">Agency: A - Z</a></li>
+            <li style="display: inline;"><a href="/gpp/results/?sort=agency-desc">Agency: Z - A</a></li>
+        </ul>
+
+        <ul style="padding: 0;">
+            <li style="display: inline;">Info:</li>
+            <li style="display: inline;">Title Only</li>
+            <li style="display: inline;">Everything</li>
         </ul>
 
         <h1>Results</h1>
@@ -44,6 +56,7 @@
                     {{ result.description|safe }}<br />
                     [ {{ result.agency }} | {{ result.category }} | {{ result.type }} ]<br />
                     {{ result.date_created }}
+                    {% if result.score != None %} ~ {{ result.score }}{% endif %}
                 </p>
             {% endfor %}
         {% else %}

@@ -26,6 +26,8 @@ def results(request):
         request.session['size'] = 10
     if 'num_pages' not in request.session:
         request.session['num_pages'] = 0
+    if 'sort' not in request.session:
+        request.session['sort'] = 'relevance'
 
     request.session['start'] = 0
     request.session['page_id'] = 1
@@ -47,6 +49,8 @@ def results(request):
 
         request.session['size'] = request.GET.get('size', request.session.get('size'))
 
+        request.session['sort'] = request.GET.get('sort', request.session.get('sort'))
+
     # all information gathered -> run_query
     request.session['results'], request.session['num_results'] = run_query(
         request.session['query'],
@@ -54,7 +58,8 @@ def results(request):
         request.session['categories'],
         request.session['types'],
         request.session['start'],
-        request.session['size'])
+        request.session['size'],
+        request.session['sort'])
 
     request.session['num_pages'] = int(ceil(request.session['num_results']/float(request.session['size'])))
 
