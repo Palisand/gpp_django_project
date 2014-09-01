@@ -67,8 +67,8 @@ def set_sort(sort_method):
         "relevance": ["_score"],
         "newest": [{"date_created": "desc"}],
         "oldest": [{"date_created": "asc"}],
-        "title-asc": [{"title_na": "asc"}],
-        "title-desc": [{"title_na": "desc"}],
+        "title-asc": [{"title.raw": "asc"}],
+        "title-desc": [{"title.raw": "desc"}],
         "agency-asc": [{"agency": "asc"}],
         "agency-desc": [{"agency": "desc"}],
     }

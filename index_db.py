@@ -29,8 +29,15 @@ def index():
         DOCTYPE: {
             'properties': {
                 'id':           {'type': 'integer'},
-                'title':        {'type': 'string', 'analyzer': 'gpp_analyzer', 'index': 'analyzed'},
-                'title_na':     {'type': 'string', 'index': 'not_analyzed'},
+                'title':        {'type': 'string',
+                                 'analyzer': 'gpp_analyzer',
+                                 'index': 'analyzed',
+                                 'fields': {
+                                     'raw': {
+                                         'type': 'string',
+                                         'index': 'not_analyzed'
+                                     }
+                                 }},
                 'description':  {'type': 'string', 'analyzer': 'gpp_analyzer', 'index': 'analyzed'},
                 'date_created': {'type': 'date'},
                 'common_id':    {'type': 'integer'},
