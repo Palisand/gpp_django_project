@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.core.paginator import Paginator
 from gpp_search import run_query
 from math import ceil
 
@@ -63,6 +64,10 @@ def results(request):
 
     request.session['num_pages'] = int(ceil(request.session['num_results']/float(request.session['size'])))
 
+    paginator = Paginator(range(1, request.session['num_results']+1), request.session['size'])
+    pag_res = paginator.page(request.session['page_id'])
+    print pag_res
+
     context_dict = {'agencies': AGENCIES,
                     'categories': CATEGORIES,
                     'types': TYPES,
@@ -70,6 +75,7 @@ def results(request):
                     'num_results': request.session['num_results'],
                     'pages': range(1, request.session['num_pages']+1),
                     'page_id': request.session['page_id'],
-                    'query': request.session['query']}
+                    'query': request.session['query'],
+                    'pag_res': pag_res}
 
     return render(request, 'gpp/results.html', context_dict)

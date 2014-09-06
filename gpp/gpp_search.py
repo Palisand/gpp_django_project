@@ -38,7 +38,10 @@ def run_query(query, agencies_selected=None, categories_selected=None, types_sel
             "post_tags": ["</strong>"],
             "fields": {
                 "title": {"number_of_fragments": 0},
-                "description": {"number_of_fragments": 0}
+                "description": {"number_of_fragments": 0},
+                "agency": {},
+                "category": {},
+                "type": {}
             }
         }
     })
@@ -84,8 +87,12 @@ def es_process(es_search, start):
     for result in es_search['hits']['hits']:
         rank += 1
         result[u'_source'][u'rank'] = rank
-        highlight(result, u'title')
-        highlight(result, u'description')
+        if u'highlight' in result:
+            highlight(result, u'title')
+            highlight(result, u'description')
+            highlight(result, u'agency')
+            highlight(result, u'category')
+            highlight(result, u'type')
         result[u'_source'][u'score'] = result[u'_score']
         results.append(result['_source'])
 

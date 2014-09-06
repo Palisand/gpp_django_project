@@ -72,7 +72,6 @@ def index():
         es.index(index=INDEX, doc_type=DOCTYPE, body={
             "id":           doc.id,
             "title":        doc.title,
-            "title_na":     doc.title,
             "description":  doc.description,
             "date_created": doc.date_created,
             "common_id":    doc.common_id,
