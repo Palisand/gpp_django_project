@@ -1,3 +1,9 @@
+/*!
+ * Bootstrap-select v1.6.2 (http://silviomoreto.github.io/bootstrap-select/)
+ *
+ * Copyright 2013-2014 bootstrap-select
+ * Licensed under MIT (https://github.com/silviomoreto/bootstrap-select/blob/master/LICENSE)
+ */
 (function ($) {
   'use strict';
 
@@ -259,7 +265,7 @@
             (typeof optgroup !== 'undefined' ? 'data-optgroup="' + optgroup + '"' : '') +
             ' data-normalized-text="' + normText + '"' +
             '>' + text +
-            '<span class="' + that.options.iconBase + ' ' + that.options.tickIcon + ' icon-ok check-mark"></span>' +
+            '<span class="' + that.options.iconBase + ' ' + that.options.tickIcon + ' check-mark"></span>' +
             '</a>';
       };
 
@@ -827,15 +833,6 @@
         that.$menu.find('li').filter(':visible:not(.divider)').eq(0).addClass('active').find('a').focus();
         $(this).focus();
       });
-
-      this.$menu.on('mouseenter', 'a', function (e) {
-        that.$menu.find('.active').removeClass('active');
-        $(e.currentTarget).parent().not('.disabled').addClass('active');
-      });
-
-      this.$menu.on('mouseleave', 'a', function () {
-        that.$menu.find('.active').removeClass('active');
-      });
     },
 
     val: function (value) {
@@ -860,16 +857,16 @@
     },
 
     keydown: function (e) {
-      var $this,
+      var $this = $(this),
+          $parent = ($this.is('input')) ? $this.parent().parent() : $this.parent(),
           $items,
-          $parent,
+          that = $parent.data('this'),
           index,
           next,
           first,
           last,
           prev,
           nextPrev,
-          that,
           prevIndex,
           isActive,
           keyCodeMap = {
@@ -878,14 +875,6 @@
             77: 'm', 78: 'n', 79: 'o', 80: 'p', 81: 'q', 82: 'r', 83: 's', 84: 't', 85: 'u', 86: 'v', 87: 'w', 88: 'x',
             89: 'y', 90: 'z', 96: '0', 97: '1', 98: '2', 99: '3', 100: '4', 101: '5', 102: '6', 103: '7', 104: '8', 105: '9'
           };
-
-      $this = $(this);
-
-      $parent = $this.parent();
-
-      if ($this.is('input')) $parent = $this.parent().parent();
-
-      that = $parent.data('this');
 
       if (that.options.liveSearch) $parent = $this.parent().parent();
 

@@ -13,7 +13,7 @@ def run_query(query, agencies_selected=None, categories_selected=None, types_sel
             {
                 "multi_match": {
                     "query": query,
-                    "fields": ["title", "description", "agency", "category", "type"], # "file"],
+                    "fields": ["title", "description", "agency", "category", "type"], # , "file"],
                     "type": "best_fields",
                     "cutoff_frequency": 0.0001
                 },
@@ -41,7 +41,7 @@ def run_query(query, agencies_selected=None, categories_selected=None, types_sel
                 "description": {"number_of_fragments": 0},
                 "agency": {},
                 "category": {},
-                "type": {}
+                "type": {},
             }
         }
     })
@@ -86,6 +86,7 @@ def es_process(es_search, start):
     rank = int(start)
     for result in es_search['hits']['hits']:
         rank += 1
+        # del result[u'_source'][u'file']
         result[u'_source'][u'rank'] = rank
         if u'highlight' in result:
             highlight(result, u'title')

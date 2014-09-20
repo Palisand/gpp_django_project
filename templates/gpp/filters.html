@@ -1,17 +1,17 @@
 <div class="container" id="filters">
-    <select name="agencies[]" id="agencies" multiple style="width: 300px">
+    <select class="selectpicker" title="All Agencies" name="agencies[]" id="agencies" multiple>
         {% for agency in agencies %}
             <option value="{{ agency }}">{{ agency }}</option>
         {% endfor %}
-    </select><br />
-    <select name="categories[]" id="categories" multiple style="width: 300px">
+    </select><br /><br />
+    <select class="selectpicker" title="All Categories" name="categories[]" id="categories" multiple>
         {% for category in categories %}
             <option value="{{ category }}">{{ category }}</option>
         {% endfor %}
-    </select><br />
-    <select name="types[]" id="types" multiple style="width: 300px">
+    </select><br /><br />
+    <select class="selectpicker" title="All Types" name="types[]" id="types" multiple>
         {% for type in types %}
             <option value="{{ type }}">{{ type }}</option>
         {% endfor %}
-    </select>
+    </select><br /><br />
 </div>

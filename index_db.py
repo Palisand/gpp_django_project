@@ -49,11 +49,10 @@ def index():
                 'url':          {'type': 'string', 'index': 'no'},
                 # 'file':           {
                 #     'type': 'attachment',
-                #     # 'analyzer': 'gpp_analyzer',
-                #     'index': 'no', # still doesn't work, what the hell?!
-                #     # 'fields': {
-                #     #     'keywords': {'store': 'yes'}
-                #     # }
+                #     'analyzer': 'gpp_analyzer',
+                #     'fields': {
+                #         'file': {'analyzer': 'gpp_analyzer'}  # purpose of 'store' elasticsearch look up
+                #     }
                 # }
             }
         }

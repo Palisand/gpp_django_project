@@ -12,7 +12,7 @@
             <input type="text" name="query" value="" id="query" />
             <input type="submit" name="submit" value="Search" /><br />
             <br />
-            {% include 'gpp/selects.html' %}
+            {% include 'gpp/filters.html' %}
         </form>
     </div>
 
@@ -75,26 +75,9 @@
             {% endif %}
         {% endif %}
 
-    {#    include pagination#}
-        {% if pages|length > 1 %}
-            <ul style="padding: 0;">
-                {% for i in pages %}
-                    <li style="display: inline;"><a href="/gpp/results/?page_id={{ i }}">{{ i }}</a></li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-
-        {% if pag_res.has_previous %}
-            <a href="/gpp/results/?page_id={{ pag_res.previous_page_number }}">PREVIOUS ({{ pag_res.previous_page_number }})</a>
-        {% endif %}
-        <p>
-            Results Displayed:<br />
-            {{ pag_res.start_index }} - {{ pag_res.end_index }}
-        </p>
-        {% if pag_res.has_next %}
-            <a href="/gpp/results/?page_id={{ pag_res.next_page_number }}">NEXT ({{ pag_res.next_page_number }})</a>
-            <p>{{ page.start_index }}</p>
-        {% endif %}
+        {% load endless %}
+        {% paginate records %}
+        {% show_pages %}
 
     </div>
 

@@ -25,8 +25,11 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
+TEMPLATE_CONTEXT_PROCESSORS += (
+    'django.core.context_processors.request',
+)
 
 INSTALLED_APPS = (
     'django.contrib.admin',
@@ -35,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'endless_pagination',
     'gpp',
 )
 
@@ -59,21 +63,12 @@ WSGI_APPLICATION = 'gpp_django_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'publications2',
-    #     'USER': 'root',
-    #     'PASSWORD': os.environ.get('RECORDS_DB_59_PASSWORD'),
-    #     'HOST': '10.155.146.59',
-    #     'PORT': '3306',
-    # }
-
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'publications',
         'USER': 'root',
         'PASSWORD': '',
-        'HOST': '127.0.0.1',
+        'HOST': 'localhost',
         'PORT': '3306',
     }
 }
@@ -94,4 +89,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
+STATIC_PATH = os.path.join(BASE_DIR, 'static')
+
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    STATIC_PATH,
+)
