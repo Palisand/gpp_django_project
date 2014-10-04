@@ -1,0 +1,9 @@
+{% load endless %}
+{% paginate records %}
+{% get_pages %}
+
+{% if pages.paginated %}
+    <ul class="pagination">
+        {{ pages }}
+    </ul>
+{% endif %}

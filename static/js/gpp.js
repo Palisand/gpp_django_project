@@ -7,3 +7,7 @@ $('.popover-hover').popover( {
     html: true,
     placement: 'top',
 });
+
+$('.endless_page_current').wrap('<li class="active"></li>')
+$('.endless_page_link').wrap('<li></li>')
+$('.endless_separator').wrap('<li class="disabled"></li>')

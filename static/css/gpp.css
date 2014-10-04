@@ -9,10 +9,26 @@
 }
 
 .navbar-centered {
-    position: absolute;
     width: 100%;
-    left: 0;
-    top: 0;
     text-align: center;
     margin: auto;
+}
+
+.navbar-white {
+    background-color: white;
+}
+
+.jumbotron {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.7) ;
+}
+
+.navbar-fixed-top {
+    border-width: 1px 0px 1px;
+}
+
+#results {
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 50px;
 }

@@ -1,0 +1,52 @@
+<div class="modal fade contact-modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="margin-top: 50px; margin-bottom: 50px">
+        <form role="form" class="form-horizontal" method="post" action="/email">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove-circle"></span></button>
+                    <h4 class="modal-title">Feedback for D.O.R.I.S.</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="tab-pane fade active in" id="signin">
+                        <fieldset>
+                            <!-- text input-->
+                            <div class="control-group">
+                                <div class="form-group" id="name">
+                                    <div class="controls">
+                                        <div class = "input-group">
+                                            <div class = "input-group-addon">
+                                                Name
+                                            </div>
+                                            <input type="text" class="form-control" name="name" placeholder="John Smith">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group" id="email">
+                                    <div class="controls">
+                                        <div class = "input-group">
+                                            <div class = "input-group-addon">
+                                                Email
+                                            </div>
+                                            <input type="email" class="form-control" name="email" placeholder="example@me.com">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group" id="message">
+                                    <label for="feedback_msg" style="padding-bottom:10px; margin-left:40%">Send us a suggestion!</label>
+                                    <div class="controls">
+                                        <textarea class="form-control" name="feedback_msg" rows="10" cols="6" style="resize:none;" placeholder="How can we improve?"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="control-group">
+                        <input type="submit" class="btn btn-nyc" id="btn" name="send_email" value="Send">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

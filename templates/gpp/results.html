@@ -4,81 +4,106 @@
 
 {% block body_block %}
 
-    {#OR START HERE FOR A SEARCH/RESULT BLOCK?!?!?!?#}
+    <div class="container" style="max-width: 960px; position: relative; padding-top: 130px; padding-bottom: 80px;">
 
-    <div style="text-align: center">
-        <form id="search_form" method="post" action="/gpp/results/">
-            {% csrf_token %}
-            <input type="text" name="query" value="" id="query" />
-            <input type="submit" name="submit" value="Search" /><br />
-            <br />
-            {% include 'gpp/filters.html' %}
-        </form>
-    </div>
-
-    <div style="text-align: left; padding-left: 50px">
-        <ul style="padding: 0;">
-            <li style="display: inline;">Size:</li>
-            <li style="display: inline;"><a href="/gpp/results/?size=10">10</a></li>
-            <li style="display: inline;"><a href="/gpp/results/?size=20">20</a></li>
-            <li style="display: inline;"><a href="/gpp/results/?size=50">50</a></li>
-            <li style="display: inline;"><a href="/gpp/results/?size=100">100</a></li>
-        </ul>
-
-        <ul style="padding: 0;">
-            <li style="display: inline;">Sort:</li>
-            <li style="display: inline;"><a href="/gpp/results/?sort=relevance">Relevance</a></li>
-            <li style="display: inline;"><a href="/gpp/results/?sort=newest">Date: Newest</a></li>
-            <li style="display: inline;"><a href="/gpp/results/?sort=oldest">Date: Oldest</a></li>
-            <li style="display: inline;"><a href="/gpp/results/?sort=title-asc">Title: A - Z</a></li>
-            <li style="display: inline;"><a href="/gpp/results/?sort=title-desc">Title: Z - A</a></li>
-            <li style="display: inline;"><a href="/gpp/results/?sort=agency-asc">Agency: A - Z</a></li>
-            <li style="display: inline;"><a href="/gpp/results/?sort=agency-desc">Agency: Z - A</a></li>
-        </ul>
-
-        <ul style="padding: 0;">
-            <li style="display: inline;">Info:</li>
-            <li style="display: inline;"><a href="javascript:;" onclick="$('.more-info').css('display','none');">Less</a></li>
-            <li style="display: inline;"><a href="javascript:;" onclick="$('.more-info').css('display','block');">More</a></li>
-        </ul>
-
-        <h1>Results</h1>
-        {% if results %}
-            {% if pages|length > 1 %}
-                <h3><em>Displaying: </em>{{ results|length }} results for '{{ query }}' on Page: {{ page_id }}</h3>
-            {% else %}
-                {% if results|length == 1 %}
-                    <h3><em>Displaying: </em>{{ results|length }} result for '{{ query }}'</h3>
-                {% else %}
-                    <h3><em>Displaying: </em>{{ results|length }} results for '{{ query }}'</h3>
-                {% endif %}
-            {% endif %}
-            <h3><em>Total: </em>{{ num_results }}</h3>
-            <div id="results">
+        <div class="row" id="results" style="margin-bottom: 0">
+            {% if results %}
                 {% for result in results %}
-                    <p>
-                        {{ result.rank }}. <span style="text-decoration: underline;">{{ result.title|safe }}</span><br />
-                        <span class="more-info"> <!-- jStorage or HTML5 localstorage, to retain view -->
-                            {{ result.description|safe }}<br />
-                            [ {{ result.agency|safe }} | {{ result.category|safe }} | {{ result.type|safe }} ]<br />
-                            {{ result.date_created }}
-                            {% if result.score != None %} ~ {{ result.score }}{% endif %}
-                        </span>
-                    </p>
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            {{ result.rank }}. {{ result.title|safe }}
+                        </div>
+                        <div class="panel-body">
+                            <p>
+                                <span style="font-weight: bold">{{ result.agency|safe }}</span><br />
+                                {{ result.category|safe }} | <small>{{ result.type|safe }}</small><br />
+                                <small>{{ result.date_created }}</small>
+                            </p>
+                            <p>{{ result.description|safe }}</p>
+                        </div>
+                    </div>
                 {% endfor %}
-            </div>
-        {% else %}
-            {% if query %}
-                <p>No results found for <em>'{{ query }}'</em></p>
-            {% else %}
-                <p>No results found</p>
             {% endif %}
-        {% endif %}
+        </div>
 
-        {% load endless %}
-        {% paginate records %}
-        {% show_pages %}
+        <div class="text-center">
+            {% include 'gpp/pagination.html' %}
+        </div>
 
     </div>
+
+{#    <h1>Results</h1>#}
+{#        {% if results %}#}
+{#            {% if pages|length > 1 %}#}
+{#                <h3><em>Displaying: </em>{{ results|length }} results for '{{ query }}' on Page: {{ page_id }}</h3>#}
+{#            {% else %}#}
+{#                {% if results|length == 1 %}#}
+{#                    <h3><em>Displaying: </em>{{ results|length }} result for '{{ query }}'</h3>#}
+{#                {% else %}#}
+{#                    <h3><em>Displaying: </em>{{ results|length }} results for '{{ query }}'</h3>#}
+{#                {% endif %}#}
+{#            {% endif %}#}
+{#            <h3><em>Total: </em>{{ num_results }}</h3>#}
+{#            <div id="results">#}
+{#                {% for result in results %}#}
+{#                    <p>#}
+{#                        {{ result.rank }}. <span style="text-decoration: underline;">{{ result.title|safe }}</span><br />#}
+{#                        <span class="more-info"> <!-- jStorage or HTML5 localstorage, to retain view -->#}
+{#                            {{ result.description|safe }}<br />#}
+{#                            [ {{ result.agency|safe }} | {{ result.category|safe }} | {{ result.type|safe }} ]<br />#}
+{#                            {{ result.date_created }}#}
+{#                            {% if result.score != None %} ~ {{ result.score }}{% endif %}#}
+{#                        </span>#}
+{#                    </p>#}
+{#                {% endfor %}#}
+{#            </div>#}
+{#        {% else %}#}
+{#            {% if query %}#}
+{#                <p>No results found for <em>'{{ query }}'</em></p>#}
+{#            {% else %}#}
+{#                <p>No results found</p>#}
+{#            {% endif %}#}
+{#        {% endif %}#}
+{##}
+{#        {% load endless %}#}
+{#        {% paginate records %}#}
+{#        {% show_pages %}#}
+
+{#    <div style="text-align: center">#}
+{#        <form id="search_form" method="post" action="/gpp/results/">#}
+{#            {% csrf_token %}#}
+{#            <input type="text" name="query" value="" id="query" />#}
+{#            <input type="submit" name="submit" value="Search" /><br />#}
+{#            <br />#}
+{#            {% include 'gpp/filters.html' %}#}
+{#        </form>#}
+{#    </div>#}
+{##}
+{#    <div style="text-align: left; padding-left: 50px">#}
+{#        <ul style="padding: 0;">#}
+{#            <li style="display: inline;">Size:</li>#}
+{#            <li style="display: inline;"><a href="/gpp/results/?size=10">10</a></li>#}
+{#            <li style="display: inline;"><a href="/gpp/results/?size=20">20</a></li>#}
+{#            <li style="display: inline;"><a href="/gpp/results/?size=50">50</a></li>#}
+{#            <li style="display: inline;"><a href="/gpp/results/?size=100">100</a></li>#}
+{#        </ul>#}
+{##}
+{#        <ul style="padding: 0;">#}
+{#            <li style="display: inline;">Sort:</li>#}
+{#            <li style="display: inline;"><a href="/gpp/results/?sort=relevance">Relevance</a></li>#}
+{#            <li style="display: inline;"><a href="/gpp/results/?sort=newest">Date: Newest</a></li>#}
+{#            <li style="display: inline;"><a href="/gpp/results/?sort=oldest">Date: Oldest</a></li>#}
+{#            <li style="display: inline;"><a href="/gpp/results/?sort=title-asc">Title: A - Z</a></li>#}
+{#            <li style="display: inline;"><a href="/gpp/results/?sort=title-desc">Title: Z - A</a></li>#}
+{#            <li style="display: inline;"><a href="/gpp/results/?sort=agency-asc">Agency: A - Z</a></li>#}
+{#            <li style="display: inline;"><a href="/gpp/results/?sort=agency-desc">Agency: Z - A</a></li>#}
+{#        </ul>#}
+{##}
+{#        <ul style="padding: 0;">#}
+{#            <li style="display: inline;">Info:</li>#}
+{#            <li style="display: inline;"><a href="javascript:;" onclick="$('.more-info').css('display','none');">Less</a></li>#}
+{#            <li style="display: inline;"><a href="javascript:;" onclick="$('.more-info').css('display','block');">More</a></li>#}
+{#        </ul>#}
+{#    </div>#}
 
 {% endblock %}

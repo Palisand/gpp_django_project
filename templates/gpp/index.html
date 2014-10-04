@@ -4,6 +4,13 @@
 
 {% block body_block %}
 
+    <style>
+        body {
+            background-image: url(/static/images/background.jpg);
+            background-size: cover;
+        }
+    </style>
+
     <div class="container" style="max-width: 600px; padding-top: 150px;">
         <div class="jumbotron">
             <h2>Search Publications</h2>
@@ -17,25 +24,23 @@
                         </span>
                     </div>
                 </p>
-                <div style="text-align: center;">
-                    <p>
-                        <div class="btn-group" data-toggle="buttons">
-                            <label class="btn btn-primary active">
-                                <input type="radio" name="options" id="option1" checked> Standard Search
-                            </label>
-                            <label class="btn btn-primary popover-hover" data-toggle="popover" data-content="Enables searching by document content.">
-                                <input type="radio" name="options" id="option2"> Full-text Search
-                            </label>
-                        </div>
-                    </p>
-                    <p>
-                        <button type="button" class="btn btn-default" onclick="$('#filters').slideToggle(); $('#filterCaret').toggleClass('caret-reversed')">
-                            Filters&nbsp;
-                            <span id='filterCaret' class="caret"></span>
-                        </button>
-                    </p>
-                    {% include 'gpp/filters.html' %}
-                </div>
+                <p>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-primary active">
+                            <input type="radio" name="options" id="option1" checked> Standard Search
+                        </label>
+                        <label class="btn btn-primary popover-hover" data-toggle="popover" data-content="Enables searching by document content.">
+                            <input type="radio" name="options" id="option2"> Full-text Search
+                        </label>
+                    </div>
+                </p>
+                <p>
+                    <button type="button" class="btn btn-default" onclick="$('#filters').slideToggle(); $('#filterCaret').toggleClass('caret-reversed')">
+                        Filters&nbsp;
+                        <span id='filterCaret' class="caret"></span>
+                    </button>
+                </p>
+                {% include 'gpp/filters.html' %}
             </form>
         </div>
 
