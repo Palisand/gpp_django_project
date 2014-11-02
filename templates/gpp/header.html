@@ -1,9 +1,11 @@
 {% load static %}
 
-<div id="header" class="navbar navbar-white navbar-fixed-top navbar-centered" role="navigation">
-    <img src="{% static "images/nyc_purple.gif" %}" alt="NYC" style="width: 80px; height: 30px; margin-top: 7px;">
+<div id="header-logo" class="navbar navbar-white navbar-fixed-top navbar-centered" role="navigation">
+    <a href="http://www1.nyc.gov">
+        <img id="nyc-header-logo" src="{% static "images/nyc_purple.gif" %}" alt="NYC">
+    </a>
 </div>
-<div id="header" class="navbar navbar-default navbar-fixed-top" style="top:50px; " role="navigation">
+<div id="header-nav" class="navbar navbar-default navbar-fixed-top" style="top:50px; " role="navigation">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -13,11 +15,11 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="/gpp/">
-                <span>Government Publications Portal</span>
+                Government Publications Portal
             </a>
         </div>
         <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right pull-right" style="text-align: right;">
+            <ul class="nav navbar-nav navbar-right" style="text-align: center;">
                 <li><a href = "#" class="modal-link" data-toggle="modal" data-target=".contact-modal">Feedback</a></li>
                 <li><a href="about">About</a></li>
                 <li><a href="http://www.nyc.gov/html/records/html/contact/home.shtml" target="_blank">Contact</a></li>

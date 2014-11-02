@@ -51,7 +51,7 @@ def results(request):
         request.session['sort'] = request.GET.get('sort', request.session.get('sort'))
 
     # all information gathered -> run_query
-    request.session['results'], request.session['num_results'] = run_query(
+    request.session['results'], request.session['results_total'] = run_query(
         request.session['query'],
         request.session['agencies'],
         request.session['categories'],
@@ -60,14 +60,16 @@ def results(request):
         request.session['size'],
         request.session['sort'])
 
-    request.session['num_pages'] = int(ceil(request.session['num_results']/float(request.session['size'])))
+    request.session['num_pages'] = int(ceil(request.session['results_total']/float(request.session['size'])))
 
     context_dict = {'agencies': AGENCIES,
                     'categories': CATEGORIES,
                     'types': TYPES,
                     'results': request.session['results'],
-                    'num_results': request.session['num_results'],
-                    'records': range(1, request.session['num_results']+1),
+                    'results_start': request.session['start'] + 1,
+                    'results_end': request.session['start'] + len(request.session['results']),
+                    'results_total': request.session['results_total'],
+                    'records': range(1, request.session['results_total']+1),
                     'page': request.session['page'],
                     'query': request.session['query']}
 

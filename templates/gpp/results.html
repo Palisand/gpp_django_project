@@ -4,7 +4,20 @@
 
 {% block body_block %}
 
-    <div class="container" style="max-width: 960px; position: relative; padding-top: 130px; padding-bottom: 80px;">
+    <div id="results-info-nav" class="navbar navbar-white navbar-fixed-top navbar-fade-bottom navbar-centered" style="top:100px;" role="navigation">
+        <div class="container">
+            <p class="navbar-text">
+                Displaying <strong>{{ results|length }}</strong>
+                results ( <strong>{{ results_start }} - {{ results_end }}</strong> )
+                out of <strong>{{ results_total }}</strong>
+                for <strong>'{{ query }}'</strong>
+            </p>
+        </div>
+    </div>
+
+    <div class="container" style="max-width: 960px; position: relative; padding-top: 180px; padding-bottom: 50px;"> {# change padding-top when resize (see gpp.js #}
+
+        {% include 'gpp/options_bar.html' %}
 
         <div class="row" id="results" style="margin-bottom: 0">
             {% if results %}
@@ -43,7 +56,7 @@
 {#                    <h3><em>Displaying: </em>{{ results|length }} results for '{{ query }}'</h3>#}
 {#                {% endif %}#}
 {#            {% endif %}#}
-{#            <h3><em>Total: </em>{{ num_results }}</h3>#}
+{#            <h3><em>Total: </em>{{ results_total }}</h3>#}
 {#            <div id="results">#}
 {#                {% for result in results %}#}
 {#                    <p>#}

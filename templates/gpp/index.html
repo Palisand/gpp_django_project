@@ -6,7 +6,10 @@
 
     <style>
         body {
-            background-image: url(/static/images/background.jpg);
+            background: url(/static/images/background.jpg) no-repeat fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
             background-size: cover;
         }
     </style>
@@ -16,15 +19,13 @@
             <h2>Search Publications</h2>
             <form id="search_form" role="form" method="post" action='/gpp/results/'>
                 {% csrf_token %}
-                <p>
                     <div class="input-group">
                         <input class="form-control" type="text" id="query" value="" name="query">
                         <span class="input-group-btn">
                             <button type="submit" class="btn btn-primary" name="submit">Go</button>
                         </span>
                     </div>
-                </p>
-                <p>
+                <br />
                     <div class="btn-group" data-toggle="buttons">
                         <label class="btn btn-primary active">
                             <input type="radio" name="options" id="option1" checked> Standard Search
@@ -33,14 +34,15 @@
                             <input type="radio" name="options" id="option2"> Full-text Search
                         </label>
                     </div>
-                </p>
-                <p>
-                    <button type="button" class="btn btn-default" onclick="$('#filters').slideToggle(); $('#filterCaret').toggleClass('caret-reversed')">
+                <br /><br />
+                    <button type="button" class="btn" onclick="$('#filters').slideToggle(); $('#filterCaret').toggleClass('caret-reversed')">
                         Filters&nbsp;
                         <span id='filterCaret' class="caret"></span>
                     </button>
-                </p>
+                <br /><br />
+
                 {% include 'gpp/filters.html' %}
+
             </form>
         </div>
 

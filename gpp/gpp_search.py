@@ -34,8 +34,8 @@ def run_query(query, agencies_selected=None, categories_selected=None, types_sel
             }
         },
         "highlight": {
-            "pre_tags": ["<strong>"],
-            "post_tags": ["</strong>"],
+            "pre_tags": ["<span class='highlight'>"],
+            "post_tags": ["</span>"],
             "fields": {
                 "title": {"number_of_fragments": 0},
                 "description": {"number_of_fragments": 0},
